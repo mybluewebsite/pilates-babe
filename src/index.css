@@ -2,17 +2,16 @@
    1. GLOBAL VARIABLES & RESET
 ========================================= */
 :root {
-  /* Brand Colors - Adjust these to match your exact pinks/neutrals */
-  --color-primary: #f2cdd7; /* Pilates Babe Pink */
-  --color-primary-dark: #d89fb0;
+  --color-primary: #e379c7;
+  --color-primary-dark: #da36ae;
   --color-bg-light: #fef8fa;
-  --color-text-main: #333333;
+  --color-text-main: #2b5632;
   --color-text-muted: #666666;
   --color-white: #ffffff;
   
   /* Typography */
   --font-heading: 'Playfair Display', serif;
-  --font-body: 'Roboto Mono', monospace;
+  --font-body: 'Playfair Display', serif;
   --font-accent: 'Birthstone', cursive;
 
   /* Spacing & Layout */
@@ -140,6 +139,7 @@ a {
   border-radius: var(--border-radius);
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
   transition: transform var(--transition-speed) ease;
+  color: var(--color-text-main) !important;
 }
 
 .service:hover {

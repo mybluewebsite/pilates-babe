@@ -257,24 +257,59 @@ const AboutPage = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
   const faqs = [
     {
-      question: "Do I need to bring my own mat?",
-      answer: "",
+      question: "What is Pilates?",
+      answer:
+        "Pilates is a low-impact form of exercise that focuses on controlled, intentional movement. It works to strengthen your core, improve posture, increase flexibility and build full-body strength while supporting mobility and stability.",
     },
     {
-      question: "",
-      answer: "",
+      question: "Why choose Pilates?",
+      answer:
+        "Pilates helps you build strength from the inside out. It improves posture, stability, flexibility and body awareness while being kind to your joints. Whether you're looking to feel stronger, move better, prevent injury or simply take time to connect with your body, Pilates is a powerful way to do it.",
     },
     {
       question: "What should I wear?",
-      answer: "",
+      answer:
+        "Wear comfortable clothing that you can move freely in. Leggings, shorts or joggers paired with a fitted top work best so you can move easily and see your alignment during exercises. Grip socks are great if you have them, but regular socks or bare feet are also fine.",
     },
     {
       question: "What should I bring?",
-      answer: "",
+      answer:
+        "Just bring yourself and some water. Mats and any equipment needed for the class are provided.",
+    },
+    {
+      question: "How do I book sessions?",
+      answer:
+        "Sessions can be booked through the online booking system. Simply choose your class, select a time that works for you and secure your spot. Spaces are limited, so booking in advance is recommended.",
+    },
+    {
+      question: "Do you have an age policy?",
+      answer:
+        "Classes are suitable for anyone aged 16 and over. If you are under 18, a parent or guardian may need to provide consent.",
+    },
+    {
+      question: "How do I pay?",
+      answer:
+        "All payments are made online at the time of booking to secure your place in class.",
+    },
+    {
+      question: "Can I cancel?",
+      answer:
+        "Yes. If you need to cancel your class, please do so within the cancellation window stated at booking so the space can be offered to someone else. Late cancellations or no-shows may still be charged.",
     },
     {
       question: "Can I come if I'm pregnant?",
-      answer: "",
+      answer:
+        "You're welcome to attend classes during your second trimester, provided you were active before pregnancy and your healthcare provider has confirmed it's safe for you to exercise. Please let me know before class so I can offer appropriate modifications. However, classes are not suitable during the first or third trimester.",
+    },
+    {
+      question: "Can I come if I've just had a baby?",
+      answer:
+        "Yes, but only once you've been cleared by your healthcare provider (usually at your 6-8 week postnatal check). Everyone's recovery is different, so please let me know beforehand and we can ease you back into movement safely.",
+    },
+    {
+      question: "Can I come if I'm a total beginner?",
+      answer:
+        "Absolutely. Classes are designed to be welcoming for all levels, including complete beginners. Options and modifications are offered throughout the class so you can work at a pace that feels right for your body while still being challenged. Pilates is all about learning and building strength over time, so everyone starts somewhere.",
     },
   ];
 
