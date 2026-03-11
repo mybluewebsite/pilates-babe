@@ -384,8 +384,8 @@ const AboutPage = () => {
         <div className="bio container">
           <div className="bio-img-div svg-layer-2">
             <img
-              src="/assets/images/about_me.png"
-              alt="Hannah demonstrating a Pilates pose"
+              src="/assets/images/Hannah-Hill.png"
+              alt="A picture of the founder of Pilates Babe Cardiff"
               id="bio-img"
             />
           </div>
