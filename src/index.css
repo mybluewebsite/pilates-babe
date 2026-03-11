@@ -101,6 +101,8 @@ a {
   padding: var(--spacer-lg) var(--spacer-sm);
   background-color: var(--color-primary);
   color: var(--color-white);
+  border-bottom: solid;
+  border-bottom-color: var(--color-text-main);
 }
 
 .intro-content {
@@ -125,6 +127,17 @@ a {
   font-weight: bold;
   margin: var(--spacer-sm) auto 0;
   font-size: 1.1rem;
+}
+
+.card#classes {
+  border-radius: inherit;
+}
+
+.card#about {
+  border-radius: inherit;
+  border-bottom: solid;
+  border-bottom-color: var(--color-text-main);
+  border-top: none;
 }
 
 /* Services / Classes Grid */
@@ -325,6 +338,8 @@ footer {
   color: var(--color-white);
   text-align: center;
   padding: var(--spacer-md) var(--spacer-sm);
+  border-top: solid;
+  border-top-color: var(--color-text-main);
 }
 
 .social-link {
