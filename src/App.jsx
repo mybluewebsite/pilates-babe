@@ -213,48 +213,106 @@ const HomePage = () => (
 );
 
 const TimetablePage = () => {
-  const days = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
+  const schedule = [
+    {
+      day: "Monday",
+      classes: [
+        { time: "18:15", type: "REFORMER", studio: "LLLHEALING" },
+        { time: "20:00", type: "MAT", studio: "CTK" },
+      ],
+    },
+    {
+      day: "Tuesday",
+      classes: [
+        { time: "06:50", type: "HOT MAT", studio: "OREN WELLNESS" },
+        { time: "20:00", type: "MAT", studio: "VIBES" },
+      ],
+    },
+    {
+      day: "Wednesday",
+      classes: [
+        { time: "09:05", type: "XPRESS MAT", studio: "ATONE RHIWBINA" },
+        { time: "19:15", type: "MAT", studio: "ATONE RHIWBINA" },
+      ],
+    },
+    {
+      day: "Thursday",
+      classes: [
+        { time: "07:30", type: "MAT", studio: "VIBES" },
+        { time: "18:00", type: "HOT MAT", studio: "OREN WELLNESS" },
+        { time: "20:00", type: "MAT", studio: "DCD" },
+      ],
+    },
+    {
+      day: "Friday",
+      classes: [
+        { time: "09:30", type: "MAT", studio: "CTK CHURCH HALL" },
+        { time: "12:30", type: "HOT MAT", studio: "OREN WELLNESS" },
+        { time: "EVENING", type: "EVENTS", studio: "VARIOUS" },
+      ],
+    },
+    {
+      day: "Saturday",
+      classes: [
+        { time: "09:45", type: "MAT", studio: "SELF LOVE SUPERSTORE" },
+        { time: "EVENING", type: "EVENTS", studio: "VARIOUS" },
+      ],
+    },
+    {
+      day: "Sunday",
+      classes: [
+        { time: "11:00", type: "HOT MAT", studio: "LLLHEALING" },
+        { time: "19:00", type: "MAT", studio: "CTK" },
+      ],
+    },
   ];
-  const scheduleRows = Array(5).fill([
-    { text: "7:00am - Mat", studio: "Studio A" },
-    { text: "6:00pm - Reformer", studio: "Studio B" },
-    { text: "7:00am - Mat", studio: "Studio A" },
-    { text: "6:00pm - Reformer", studio: "Studio B" },
-    { text: "8:00am - Mat", studio: "Studio A" },
-    { text: "9:00am - Reformer", studio: "Studio A" },
-    { text: "9:00am - Reformer", studio: "Studio A" },
-  ]);
 
   return (
     <section id="timetable" className="spacer svg-layer-1">
       <aside className="timetable container">
         <div className="schedule-grid">
-          {days.map((day) => (
-            <div className="day" key={day}>
-              {day}
+          {schedule.map((daySchedule) => (
+            <div className="day-column" key={daySchedule.day}>
+              <div className="day">{daySchedule.day}</div>
+              {daySchedule.classes.length > 0 ? (
+                daySchedule.classes.map((cls, idx) => (
+                  <div className="class-slot class mt-2" key={idx}>
+                    <strong>
+                      {cls.time} - {cls.type}
+                    </strong>
+                    <br />
+                    <small>{cls.studio}</small>
+                  </div>
+                ))
+              ) : (
+                <div
+                  className="class-slot class mt-2 text-muted"
+                  style={{ opacity: 0.5 }}
+                >
+                  Rest Day
+                </div>
+              )}
             </div>
           ))}
-          {scheduleRows.map((row, rowIndex) =>
-            row.map((cls, colIndex) => (
-              <div className="class-slot class" key={`${rowIndex}-${colIndex}`}>
-                {cls.text}
-                <br />
-                <small>{cls.studio}</small>
-              </div>
-            )),
-          )}
         </div>
-        <p className="timetable-note mt-4">
-          Tuesday and Thursday are both booked via the QR code, all other
-          classes are booked direct with the studios - follow links.
-        </p>
+        <div className="timetable-note mt-4">
+          <h2>
+            <a
+              href="https://gymcatch.com/app/provider/9600/events"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              BOOK HERE
+            </a>
+          </h2>
+          <p>
+            You can make a booking using the "BOOK HERE" link above or by
+            visiting the respective studio's booking system directly. Please
+            note that due to some classes being hosted by third-party studios,
+            bookings and cancellation policies may vary. Always check the
+            specific studio's guidelines when booking their classes.
+          </p>
+        </div>
       </aside>
     </section>
   );
@@ -461,7 +519,9 @@ const TermsAndConditions = () => (
       We are here to create a community of babes in Cardiff. All users must:
     </p>
     <ul>
-      <li>Respect the instructor, third-party studio staff, and fellow attendees.</li>
+      <li>
+        Respect the instructor, third-party studio staff, and fellow attendees.
+      </li>
       <li>
         Follow specific studio rules, equipment guidelines, and hygiene
         protocols (such as wiping down reformer machines and wearing grip

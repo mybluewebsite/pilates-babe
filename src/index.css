@@ -179,7 +179,17 @@ a {
    5. TIMETABLE STYLES
 ========================================= */
 #timetable {
-  padding: var(--spacer-lg) var(--spacer-sm);
+  padding: var(--spacer-md) var(--spacer-sm);
+}
+
+.timetable-note {
+  font-size: 1.10rem;
+  margin: var(--spacer-md) auto;
+  text-align: center;
+}
+
+.timetable-note a:hover {
+  color: var(--color-primary);
 }
 
 .schedule-grid {
@@ -200,11 +210,11 @@ a {
 }
 
 .class-slot {
-  background: var(--color-white);
+  background: var(--color-bg-light);
   border: 1px solid #eee;
   padding: 0.5rem;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   border-radius: 4px;
 }
 
@@ -265,7 +275,7 @@ footer {
   background-color: var(--color-primary);
   color: var(--color-white);
   text-align: center;
-  padding: var(--spacer-lg) var(--spacer-sm);
+  padding: var(--spacer-md) var(--spacer-sm);
 }
 
 .social-link {
