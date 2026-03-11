@@ -156,12 +156,12 @@ const HomePage = () => (
     <section id="intro">
       <div className="intro-content container">
         <img
-          src="/assets/images/white_placeholder.webp"
+          src="/assets/images/Hannah.png"
           id="intro-img"
           alt="Pilates Babe doing Pilates"
         />
         <div id="intro-header">
-          <h2>BOOK HERE</h2>
+          <h2><a href="https://gymcatch.com/app/provider/9600/events" target="_blank" rel="noopener noreferrer">BOOK HERE</a></h2>
         </div>
       </div>
       <p className="intro-text">
@@ -172,7 +172,7 @@ const HomePage = () => (
 
     <section className="card spacer svg-layer-5" id="classes">
       <div className="grid container">
-        <div className="service">
+        <div className="service" id="reformer">
           <h3>Reformer Pilates</h3>
           <p>
             Reformer pilates is a low-impact, full-body workout performed on a
@@ -185,7 +185,7 @@ const HomePage = () => (
             only methods.
           </p>
         </div>
-        <div className="service">
+        <div className="service" id="mat">
           <h3>Mat Pilates</h3>
           <p>
             Mat pilates is the most simple form of pilates as it primarily uses

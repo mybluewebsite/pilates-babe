@@ -73,7 +73,7 @@ a {
 
 #navbar-brand-img {
   height: 8rem; /* Responsive sizing */
-  max-height: 100px;
+  max-height: 140px;
   object-fit: contain;
 }
 
@@ -112,6 +112,10 @@ a {
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+#intro-header a:hover {
+  color: var(--color-text-main);
+}
+
 .intro-text {
   font-weight: bold;
   max-width: 600px;
@@ -144,6 +148,18 @@ a {
 
 .service:hover {
   transform: translateY(-5px);
+}
+
+.service #reformer {
+  background-image: url('/assets/images/reformer.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.service #mat {
+  background-image: url('/assets/images/mat.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 /* =========================================
