@@ -8,11 +8,11 @@
   --color-text-main: #2b5632;
   --color-text-muted: #666666;
   --color-white: #ffffff;
-  
+
   /* Typography */
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Playfair Display', serif;
-  --font-accent: 'Birthstone', cursive;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Playfair Display", serif;
+  --font-accent: "Birthstone", cursive;
 
   /* Spacing & Layout */
   --spacer-sm: 1rem;
@@ -36,7 +36,12 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   margin-bottom: var(--spacer-sm);
@@ -78,8 +83,8 @@ a {
 }
 
 .nav-item {
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-weight: 850;
+  letter-spacing: 3px;
   padding: 0.5rem 1rem;
   color: var(--color-text-main);
 }
@@ -109,7 +114,7 @@ a {
   width: 100%;
   max-width: 500px;
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 #intro-header a:hover {
@@ -118,7 +123,6 @@ a {
 
 .intro-text {
   font-weight: bold;
-  max-width: 600px;
   margin: var(--spacer-md) auto 0;
   font-size: 1.1rem;
 }
@@ -141,7 +145,7 @@ a {
   background: var(--color-white);
   padding: var(--spacer-md);
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: transform var(--transition-speed) ease;
   color: var(--color-text-main) !important;
 }
@@ -150,14 +154,23 @@ a {
   transform: translateY(-5px);
 }
 
-.service #reformer {
-  background-image: url('/assets/images/reformer.jpg');
+.service h3 {
+  font-family: var(--font-accent);
+  font-size: 2.6rem;
+}
+
+.service#reformer {
+  background-image:
+    linear-gradient(rgba(254, 248, 250, 0.8), rgba(254, 248, 250, 0.8)),
+    url("/assets/images/reformer.png");
   background-size: cover;
   background-position: center;
 }
 
-.service #mat {
-  background-image: url('/assets/images/mat.jpg');
+.service#mat {
+  background-image:
+    linear-gradient(rgba(254, 248, 250, 0.8), rgba(254, 248, 250, 0.8)),
+    url("/assets/images/mat.png");
   background-size: cover;
   background-position: center;
 }
@@ -215,7 +228,7 @@ a {
 #bio-img {
   max-width: 300px;
   border-radius: 50%;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .faq-spacer {
@@ -230,7 +243,7 @@ a {
   padding: 1rem;
   border-radius: var(--border-radius);
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .answer {
@@ -283,7 +296,10 @@ footer {
 /* Legal Modals */
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
