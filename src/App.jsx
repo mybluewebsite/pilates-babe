@@ -415,7 +415,7 @@ const AboutPage = () => {
       </section>
 
       <section id="faqs" className="card faq-spacer svg-layer-4 container">
-        <h2>FAQs</h2>
+        <h2>Frequently Asked Questions</h2>
         <div className="faq">
           {faqs.map((faq, index) => (
             <div
