@@ -293,6 +293,11 @@ footer {
   color: var(--color-text-main);
 }
 
+.legal-content h2 {
+  font-family: var(--font-accent);
+  font-size: 3.5rem;
+}
+
 /* Legal Modals */
 .modal-overlay {
   position: fixed;

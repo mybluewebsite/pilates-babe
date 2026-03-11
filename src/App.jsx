@@ -132,13 +132,12 @@ const Layout = ({ children }) => {
             >
               X
             </button>
-            <div className="legal-text">
-              <h2>
-                {activeLegalPage === "terms"
-                  ? "Terms & Conditions"
-                  : "Privacy Policy"}
-              </h2>
-              <p>Your {activeLegalPage} text goes here...</p>
+            <div className="legal-text text-start">
+              {activeLegalPage === "terms" ? (
+                <TermsAndConditions />
+              ) : (
+                <PrivacyPolicy />
+              )}
             </div>
           </div>
         </div>
@@ -161,7 +160,15 @@ const HomePage = () => (
           alt="Pilates Babe doing Pilates"
         />
         <div id="intro-header">
-          <h2><a href="https://gymcatch.com/app/provider/9600/events" target="_blank" rel="noopener noreferrer">BOOK HERE</a></h2>
+          <h2>
+            <a
+              href="https://gymcatch.com/app/provider/9600/events"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              BOOK HERE
+            </a>
+          </h2>
         </div>
       </div>
       <p className="intro-text">
@@ -390,3 +397,171 @@ const App = () => {
 };
 
 export default App;
+
+// ------------------------------------------------------------------
+// LEGAL CONTENT COMPONENTS
+// ------------------------------------------------------------------
+
+const TermsAndConditions = () => (
+  <div className="legal-content">
+    <h2>Terms & Conditions</h2>
+    <p>
+      <strong>Last Updated:</strong> March 2026
+    </p>
+
+    <h4>1. Introduction</h4>
+    <p>
+      These Terms & Conditions govern the use of the Pilates Babe Cardiff
+      website and services. By booking a class or using our services, users
+      agree to these terms.
+    </p>
+
+    <h4>2. Services Provided</h4>
+    <p>
+      Pilates Babe Cardiff provides fitness and health sessions, specifically
+      mat and reformer pilates classes. These classes are offered at various
+      studio locations and booked either directly through us or via third-party
+      studio booking systems.
+    </p>
+
+    <h4>3. Booking & Cancellation Policy</h4>
+    <ul>
+      <li>
+        <strong>Direct Bookings:</strong> For classes booked directly with
+        Pilates Babe Cardiff, cancellations must be made at least 12 hours
+        before the scheduled class time. Late cancellations or no-shows may
+        result in the loss of your session credit or a cancellation charge.
+      </li>
+      <li>
+        <strong>Third-Party Studios:</strong> For classes booked directly with
+        partner studios (as indicated on our timetable), you must adhere to the
+        specific cancellation and booking policies of that respective studio.
+      </li>
+    </ul>
+
+    <h4>4. Liability Waiver</h4>
+    <p>By booking and attending sessions, users acknowledge that:</p>
+    <ul>
+      <li>
+        Participation is entirely voluntary, and all risks related to physical
+        activity are assumed by the user.
+      </li>
+      <li>
+        Pilates Babe Cardiff (and Hannah) is not liable for injuries, accidents,
+        or health conditions arising from participation.
+      </li>
+      <li>
+        Any relevant medical conditions, injuries, or pregnancies must be
+        disclosed to the instructor before attending any sessions.
+      </li>
+    </ul>
+
+    <h4>5. User Conduct</h4>
+    <p>
+      We are here to create a community of babes in Cardiff. All users must:
+    </p>
+    <ul>
+      <li>Respect the instructor, third-party studio staff, and fellow attendees.</li>
+      <li>
+        Follow specific studio rules, equipment guidelines, and hygiene
+        protocols (such as wiping down reformer machines and wearing grip
+        socks).
+      </li>
+    </ul>
+
+    <h4>6. Age Restrictions</h4>
+    <p>Users must be at least 16 years old to book and attend classes.</p>
+
+    <h4>7. Payment & Refunds</h4>
+    <p>
+      Payments made directly to Pilates Babe Cardiff are processed securely.
+      Class credits and block bookings are strictly non-refundable, except in
+      exceptional circumstances at the sole discretion of Pilates Babe Cardiff.
+    </p>
+
+    <h4>8. Contact Information</h4>
+    <p>
+      For inquiries, please email: <strong>pilatesbabecardiff@gmail.com</strong>{" "}
+      or contact us via Instagram <strong>@pilatesbabecardiff</strong>.
+    </p>
+  </div>
+);
+
+const PrivacyPolicy = () => (
+  <div className="legal-content">
+    <h2>Privacy Policy</h2>
+    <p>
+      <strong>Last Updated:</strong> March 2026
+    </p>
+
+    <h4>1. Introduction</h4>
+    <p>
+      Welcome to Pilates Babe Cardiff. Your privacy is incredibly important to
+      us. This Privacy Policy explains how your personal information is
+      collected, used, and protected when you interact with our website and
+      attend our classes.
+    </p>
+
+    <h4>2. Information Collected</h4>
+    <p>
+      The following personal data may be collected and processed when you
+      interact with us:
+    </p>
+    <ul>
+      <li>
+        <strong>Personal Details:</strong> Name, email address, phone number,
+        and emergency contact details.
+      </li>
+      <li>
+        <strong>Health Information:</strong> Information provided voluntarily
+        (such as through a health questionnaire or PAR-Q) to help assess your
+        suitability for mat and reformer pilates and to ensure your safety.
+      </li>
+      <li>
+        <strong>Booking History:</strong> Information on class bookings,
+        attendance, and cancellations.
+      </li>
+    </ul>
+
+    <h4>3. How Information is Used</h4>
+    <p>Your personal data is used for the following purposes:</p>
+    <ul>
+      <li>Managing class bookings, registers, and schedules.</li>
+      <li>Ensuring your health and safety during physical exercise.</li>
+      <li>
+        Sending important updates regarding class changes or cancellations.
+      </li>
+      <li>Processing payments securely.</li>
+      <li>Responding to your direct inquiries or messages.</li>
+    </ul>
+
+    <h4>4. Third-Party Services</h4>
+    <p>
+      Your data may interact with third-party service providers, specifically:
+    </p>
+    <ul>
+      <li>
+        <strong>Partner Studios:</strong> If you book a class hosted by one of
+        our partner studios, your data will be subject to their booking systems.
+      </li>
+      <li>
+        <strong>Payment Processors:</strong> For direct bookings, payment data
+        is processed securely via third-party providers.
+      </li>
+    </ul>
+    <p>We do not sell your personal data to anyone.</p>
+
+    <h4>5. User Rights</h4>
+    <p>
+      Under UK data protection laws (GDPR), you have the right to request access
+      to the personal data we hold about you, request correction of inaccurate
+      data, or request deletion of your data.
+    </p>
+
+    <h4>6. Contact Information</h4>
+    <p>
+      To exercise your data rights or for privacy-related inquiries, please
+      email: <strong>pilatesbabecardiff@gmail.com</strong>.
+    </p>
+  </div>
+);
