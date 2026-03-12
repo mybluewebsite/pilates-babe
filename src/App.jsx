@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from 'react';
 import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 // ------------------------------------------------------------------
@@ -151,59 +151,47 @@ const Layout = ({ children }) => {
 // ------------------------------------------------------------------
 
 const HeroCarousel = () => {
-  // Placeholder images - replace with actual photos of your classes or studio
+  const carouselRef = useRef(null);
+  
   const images = [
-    "/assets/images/Hannah.png",
-    "/assets/images/mat.png",
+    "/assets/images/mat.png", 
     "/assets/images/reformer.png",
-    "/assets/images/pilates-event.jpg",
+    "/assets/images/Hannah.png",
+    "/assets/images/pilates-event.jpg"
   ];
-  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images.length);
-  const prevSlide = () =>
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  // Function to smoothly scroll the track when arrows are clicked
+  const scroll = (direction) => {
+    if (carouselRef.current) {
+      // Scrolls by roughly the width of one image
+      const scrollAmount = carouselRef.current.children[0].offsetWidth + 20; 
+      carouselRef.current.scrollBy({ 
+        left: direction === 'next' ? scrollAmount : -scrollAmount, 
+        behavior: 'smooth' 
+      });
+    }
+  };
 
   return (
-    <div className="hero-carousel">
-      <div className="carousel-inner">
+    <div className="hero-carousel-wrapper">
+      <button className="carousel-control prev" onClick={() => scroll('prev')} aria-label="Previous images">
+        <i className="fa-solid fa-chevron-left"></i>
+      </button>
+      
+      <div className="hero-carousel-track" ref={carouselRef}>
         {images.map((src, index) => (
           <img
             key={index}
             src={src}
             alt={`Pilates Babe slide ${index + 1}`}
-            className={`carousel-image ${index === currentIndex ? "active" : ""}`}
+            className="carousel-image-slide"
           />
         ))}
       </div>
 
-      {/* Navigation Arrows */}
-      <button
-        className="carousel-control prev"
-        onClick={prevSlide}
-        aria-label="Previous image"
-      >
-        <i className="fa-solid fa-chevron-left"></i>
-      </button>
-      <button
-        className="carousel-control next"
-        onClick={nextSlide}
-        aria-label="Next image"
-      >
+      <button className="carousel-control next" onClick={() => scroll('next')} aria-label="Next images">
         <i className="fa-solid fa-chevron-right"></i>
       </button>
-
-      {/* Bottom Indicator Dots */}
-      <div className="carousel-indicators">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            className={`indicator-dot ${index === currentIndex ? "active" : ""}`}
-            onClick={() => setCurrentIndex(index)}
-            aria-label={`Go to slide ${index + 1}`}
-          ></button>
-        ))}
-      </div>
     </div>
   );
 };
