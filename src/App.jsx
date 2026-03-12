@@ -150,15 +150,69 @@ const Layout = ({ children }) => {
 // 2. PAGE COMPONENTS
 // ------------------------------------------------------------------
 
+const HeroCarousel = () => {
+  // Placeholder images - replace with actual photos of your classes or studio
+  const images = [
+    "/assets/images/Hannah.png",
+    "/assets/images/mat.png",
+    "/assets/images/reformer.png",
+    "/assets/images/pilates-event.jpg",
+  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images.length);
+  const prevSlide = () =>
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+
+  return (
+    <div className="hero-carousel">
+      <div className="carousel-inner">
+        {images.map((src, index) => (
+          <img
+            key={index}
+            src={src}
+            alt={`Pilates Babe slide ${index + 1}`}
+            className={`carousel-image ${index === currentIndex ? "active" : ""}`}
+          />
+        ))}
+      </div>
+
+      {/* Navigation Arrows */}
+      <button
+        className="carousel-control prev"
+        onClick={prevSlide}
+        aria-label="Previous image"
+      >
+        <i className="fa-solid fa-chevron-left"></i>
+      </button>
+      <button
+        className="carousel-control next"
+        onClick={nextSlide}
+        aria-label="Next image"
+      >
+        <i className="fa-solid fa-chevron-right"></i>
+      </button>
+
+      {/* Bottom Indicator Dots */}
+      <div className="carousel-indicators">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            className={`indicator-dot ${index === currentIndex ? "active" : ""}`}
+            onClick={() => setCurrentIndex(index)}
+            aria-label={`Go to slide ${index + 1}`}
+          ></button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const HomePage = () => (
   <>
     <section id="intro">
       <div className="intro-content container">
-        <img
-          src="/assets/images/Hannah.png"
-          id="intro-img"
-          alt="Pilates Babe doing Pilates"
-        />
+        <HeroCarousel />
         <div id="intro-header">
           <h2>
             <a
