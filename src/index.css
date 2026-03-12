@@ -141,14 +141,14 @@ a {
   overflow-x: auto;
   overflow-y: hidden;
   touch-action: pan-y pan-x;
-  scroll-snap-type: x mandatory; 
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   gap: 20px;
   padding: 10px 5vw;
-  
+
   /* Hides the ugly native scrollbar but keeps the functionality */
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .hero-carousel-track::-webkit-scrollbar {
@@ -274,6 +274,7 @@ a {
 ========================================= */
 #timetable {
   padding: var(--spacer-md) var(--spacer-sm);
+  padding-bottom: 0;
 }
 
 .timetable-note {
@@ -300,7 +301,7 @@ a {
   font-weight: bold;
   text-align: center;
   background-color: var(--color-text-main);
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   padding: 0.5rem;
   border-radius: 4px;
 }
@@ -331,6 +332,7 @@ a {
   align-items: center;
   gap: var(--spacer-md);
   padding: var(--spacer-lg) var(--spacer-sm);
+  margin-top: 6rem;
 }
 
 @media (min-width: 768px) {
@@ -350,12 +352,10 @@ a {
   color: var(--color-text-main);
   font-family: var(--font-body);
   font-size: 1.3rem;
-  margin-bottom: 0.8rem;
-  margin-top: 2rem;
 }
 
 #faqs {
-  margin: var(--spacer-sm) auto;
+  margin: var(--spacer-md) auto;
   color: var(--color-text-main);
   border-style: none;
 }
@@ -408,11 +408,9 @@ a {
 ========================================= */
 footer {
   background-color: var(--color-text-main);
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   text-align: center;
   padding: var(--spacer-md) var(--spacer-sm);
-  border-top: solid;
-  border-top-color: var(--color-gold);
 }
 
 .social-link {
@@ -424,7 +422,7 @@ footer {
 }
 
 .social-link a:hover {
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
 }
 
 .legal-btn {
@@ -437,7 +435,7 @@ footer {
 }
 
 .legal-btn:hover {
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
 }
 
 .legal-content h2 {
@@ -480,4 +478,28 @@ footer {
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
+}
+
+/* =========================================
+   WAVY DIVIDERS
+========================================= */
+.wave-divider {
+  width: 100vw;
+  height: 8vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  background-image: url(/assets/svg/wave.svg);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  display: block;
+  z-index: 10;
+  position: relative;
+  margin-top: -50px;
+  margin-bottom: -1px;
+}
+
+/* Use this if you need the wave to flip upside down */
+.wave-divider.inverted {
+  background-image: url("/assets/svg/wave-inverted.svg");
 }

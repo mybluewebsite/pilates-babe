@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from "react";
 import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 // ------------------------------------------------------------------
@@ -150,34 +150,52 @@ const Layout = ({ children }) => {
 // 2. PAGE COMPONENTS
 // ------------------------------------------------------------------
 
+// ------------------------------------------------------------------
+// WAVY DIVIDER COMPONENT
+// ------------------------------------------------------------------
+const WaveDivider = ({ inverted = false }) => (
+  <div
+    className={`wave-divider ${inverted ? "inverted" : ""}`}
+    aria-hidden="true"
+  ></div>
+);
+
+// ------------------------------------------------------------------
+// HERO CAROUSEL COMPONENT
+// ------------------------------------------------------------------
+
 const HeroCarousel = () => {
   const carouselRef = useRef(null);
-  
+
   const images = [
-    "/assets/images/mat.png", 
+    "/assets/images/mat.png",
     "/assets/images/reformer.png",
     "/assets/images/Hannah.png",
-    "/assets/images/pilates-event.jpg"
+    "/assets/images/pilates-event.jpg",
   ];
 
   // Function to smoothly scroll the track when arrows are clicked
   const scroll = (direction) => {
     if (carouselRef.current) {
       // Scrolls by roughly the width of one image
-      const scrollAmount = carouselRef.current.children[0].offsetWidth + 20; 
-      carouselRef.current.scrollBy({ 
-        left: direction === 'next' ? scrollAmount : -scrollAmount, 
-        behavior: 'smooth' 
+      const scrollAmount = carouselRef.current.children[0].offsetWidth + 20;
+      carouselRef.current.scrollBy({
+        left: direction === "next" ? scrollAmount : -scrollAmount,
+        behavior: "smooth",
       });
     }
   };
 
   return (
     <div className="hero-carousel-wrapper">
-      <button className="carousel-control prev" onClick={() => scroll('prev')} aria-label="Previous images">
+      <button
+        className="carousel-control prev"
+        onClick={() => scroll("prev")}
+        aria-label="Previous images"
+      >
         <i className="fa-solid fa-chevron-left"></i>
       </button>
-      
+
       <div className="hero-carousel-track" ref={carouselRef}>
         {images.map((src, index) => (
           <img
@@ -189,12 +207,20 @@ const HeroCarousel = () => {
         ))}
       </div>
 
-      <button className="carousel-control next" onClick={() => scroll('next')} aria-label="Next images">
+      <button
+        className="carousel-control next"
+        onClick={() => scroll("next")}
+        aria-label="Next images"
+      >
         <i className="fa-solid fa-chevron-right"></i>
       </button>
     </div>
   );
 };
+
+// ------------------------------------------------------------------
+// PAGE 1: HOME
+// ------------------------------------------------------------------
 
 const HomePage = () => (
   <>
@@ -214,7 +240,7 @@ const HomePage = () => (
         </div>
       </div>
       <p className="intro-text">
-        YOUR FRIENDLY NEIGHBOURHOOD MAT AND REFORMER PILATES TEACHER HERE TO
+        YOUR FRIENDLY NEIGHBOURHOOD MAT AND REFORMER PILATES TEACHER - HERE TO
         CREATE A COMMUNITY OF BABES IN CARDIFF.
       </p>
     </section>
@@ -250,6 +276,7 @@ const HomePage = () => (
         </div>
       </div>
       <div id="grid-image" className="spacer svg-layer-3"></div>
+      <WaveDivider />
     </section>
   </>
 );
@@ -356,6 +383,7 @@ const TimetablePage = () => {
           </p>
         </div>
       </aside>
+      <WaveDivider />
     </section>
   );
 };
@@ -418,6 +446,11 @@ const AboutPage = () => {
       answer:
         "Absolutely. Classes are designed to be welcoming for all levels, including complete beginners. Options and modifications are offered throughout the class so you can work at a pace that feels right for your body while still being challenged. Pilates is all about learning and building strength over time, so everyone starts somewhere.",
     },
+    {
+      question: "What if I have an injury or health condition?",
+      answer:
+        "If you have any injuries or health conditions, please inform me before class so I can offer appropriate modifications and ensure your safety. Pilates is adaptable, and we can work around most limitations to help you move safely and effectively.",
+    },
   ];
 
   return (
@@ -475,6 +508,7 @@ const AboutPage = () => {
           ))}
         </div>
       </section>
+      <WaveDivider />
     </>
   );
 };
