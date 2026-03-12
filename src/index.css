@@ -8,7 +8,7 @@
   --color-text-main: #2b5632;
   --color-text-muted: rgb(102, 102, 102);
   --color-white: rgb(255, 255, 255);
-  --color-gold:  #c4af76;
+  --color-gold:  rgb(196, 175, 118);
   --color-anthracite: #262626;
 
   /* Typography */
@@ -204,8 +204,8 @@ a {
   font-size: 1.3rem;
   font-weight: bold;
   text-align: center;
-  background-color: var(--color-primary);
-  color: var(--color-text-main);
+  background-color: var(--color-text-main);
+  color: var(--color-primary);
   padding: 0.5rem;
   border-radius: 4px;
 }
@@ -313,8 +313,8 @@ a {
    7. FOOTER & MODALS
 ========================================= */
 footer {
-  background-color: var(--color-anthracite);
-  color: var(--color-gold);
+  background-color: var(--color-text-main);
+  color: var(--color-primary);
   text-align: center;
   padding: var(--spacer-md) var(--spacer-sm);
   border-top: solid;
