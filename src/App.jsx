@@ -168,10 +168,10 @@ const HeroCarousel = () => {
   const carouselRef = useRef(null);
 
   const images = [
-    "/assets/images/mat.png",
-    "/assets/images/reformer.png",
-    "/assets/images/Hannah.png",
-    "/assets/images/pilates-event.jpg",
+    "/assets/images/Hannah-pilates-1.webp",
+    "/assets/images/pilates-babe-reservoir.webp",
+    "/assets/images/Hannah-pilates-2.webp",
+    "/assets/images/pilates-event.webp",
   ];
 
   // Function to smoothly scroll the track when arrows are clicked
