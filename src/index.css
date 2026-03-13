@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 /* =========================================
    1. GLOBAL VARIABLES & RESET
 ========================================= */
@@ -23,6 +30,7 @@
 }
 
 * {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -50,6 +58,8 @@ h6 {
 a {
   text-decoration: none;
   color: inherit;
+  -webkit-transition: color var(--transition-speed) ease;
+  -o-transition: color var(--transition-speed) ease;
   transition: color var(--transition-speed) ease;
 }
 
@@ -61,6 +71,8 @@ a {
   min-height: 100vh;
 }
 .flex-grow-1 {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
 }
 
@@ -69,6 +81,7 @@ a {
 ========================================= */
 #navbar {
   background-color: var(--color-white);
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   padding: 0.5rem 0;
   position: sticky;
@@ -79,6 +92,7 @@ a {
 #navbar-brand-img {
   height: 8rem; /* Responsive sizing */
   max-height: 140px;
+  -o-object-fit: contain;
   object-fit: contain;
 }
 
@@ -106,8 +120,15 @@ a {
 }
 
 .intro-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   gap: var(--spacer-md);
 }
@@ -132,15 +153,23 @@ a {
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
   padding: 1rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .hero-carousel-track {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
+  -ms-touch-action: pan-y pan-x;
   touch-action: pan-y pan-x;
+  -ms-scroll-snap-type: x mandatory;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   gap: 20px;
@@ -157,18 +186,30 @@ a {
 
 .carousel-image-slide {
   /* On mobile: Shows 1 full image and peeks 15% of the next image to encourage swiping */
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 85%;
   flex: 0 0 85%;
   height: 400px;
+  -o-object-fit: cover;
   object-fit: cover;
   border-radius: var(--border-radius);
   scroll-snap-align: center;
+  -webkit-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
   transition: transform 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    -webkit-transform 0.3s ease;
 }
 
 /* On Tablets: Shows roughly 2 images */
 @media (min-width: 768px) {
   .carousel-image-slide {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 45%;
     flex: 0 0 45%;
     height: 450px;
   }
@@ -177,12 +218,16 @@ a {
 /* On Desktop: Shows roughly 3 images */
 @media (min-width: 1024px) {
   .carousel-image-slide {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 30%;
     flex: 0 0 30%;
     height: 500px;
   }
 }
 
 .carousel-image-slide:hover {
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
   transform: scale(1.02);
 }
 
@@ -190,8 +235,11 @@ a {
 .carousel-control {
   position: absolute;
   top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(0, 0, 0, 0.05);
   width: 50px;
@@ -201,21 +249,32 @@ a {
   color: var(--color-text-main);
   cursor: pointer;
   z-index: 10;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
   display: none; /* Hide arrows on mobile where users naturally swipe */
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 768px) {
   .carousel-control {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex; /* Show arrows on larger screens */
   }
 }
 
 .carousel-control:hover {
   background: var(--color-white);
+  -webkit-transform: translateY(-50%) scale(1.1);
+  -ms-transform: translateY(-50%) scale(1.1);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -239,7 +298,9 @@ a {
 
 /* Services / Classes Grid */
 .grid {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr;
   grid-template-columns: 1fr;
   gap: var(--spacer-md);
   padding: var(--spacer-lg) var(--spacer-sm);
@@ -247,6 +308,7 @@ a {
 
 @media (min-width: 768px) {
   .grid {
+    -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -255,12 +317,21 @@ a {
   background: var(--color-white);
   padding: var(--spacer-md);
   border-radius: var(--border-radius);
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  -webkit-transition: -webkit-transform var(--transition-speed) ease;
+  transition: -webkit-transform var(--transition-speed) ease;
+  -o-transition: transform var(--transition-speed) ease;
   transition: transform var(--transition-speed) ease;
+  transition:
+    transform var(--transition-speed) ease,
+    -webkit-transform var(--transition-speed) ease;
   color: var(--color-text-main) !important;
 }
 
 .service:hover {
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
   transform: translateY(-5px);
 }
 
@@ -288,7 +359,9 @@ a {
 }
 
 .schedule-grid {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr;
   grid-template-columns: repeat(7, 1fr);
   gap: 10px;
   overflow-x: auto; /* Allows horizontal scroll on mobile */
@@ -320,12 +393,28 @@ a {
   width: 150px; /* Adjust this to make the QR code bigger or smaller */
   height: 150px;
   aspect-ratio: 1 / 1;
+  -o-object-fit: contain;
   object-fit: contain;
   border-radius: var(--border-radius);
+  -webkit-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  -webkit-transition:
+    -webkit-transform var(--transition-speed) ease,
+    -webkit-box-shadow var(--transition-speed) ease;
+  transition:
+    -webkit-transform var(--transition-speed) ease,
+    -webkit-box-shadow var(--transition-speed) ease;
+  -o-transition:
+    transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
   transition:
     transform var(--transition-speed) ease,
     box-shadow var(--transition-speed) ease;
+  transition:
+    transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease,
+    -webkit-transform var(--transition-speed) ease,
+    -webkit-box-shadow var(--transition-speed) ease;
   background-color: var(
     --color-white
   ); /* Keeps the QR code perfectly readable */
@@ -333,7 +422,10 @@ a {
 }
 
 .qr-link-img:hover {
+  -webkit-transform: translateY(-5px) scale(1.05);
+  -ms-transform: translateY(-5px) scale(1.05);
   transform: translateY(-5px) scale(1.05);
+  -webkit-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
@@ -342,6 +434,18 @@ a {
 ========================================= */
 #about {
   background-image:
+    -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(255, 255, 255, 0.8)),
+      to(rgba(255, 255, 255, 0.8))
+    ),
+    url("/assets/images/pilates-babe-about-me.webp");
+  background-image:
+    -o-linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+    url("/assets/images/pilates-babe-about-me.webp");
+  background-image:
     linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
     url("/assets/images/pilates-babe-about-me.webp");
   background-position: top;
@@ -349,8 +453,15 @@ a {
 }
 
 .bio {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   gap: var(--spacer-md);
   padding: var(--spacer-lg) var(--spacer-sm);
@@ -359,6 +470,9 @@ a {
 
 @media (min-width: 768px) {
   .bio {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
   }
 }
@@ -366,6 +480,7 @@ a {
 #bio-img {
   max-width: 300px;
   border-radius: 50%;
+  -webkit-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -394,14 +509,19 @@ a {
 }
 
 .faq {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr;
   grid-template-columns: 1fr;
   gap: 15px;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: start;
 }
 
 @media (min-width: 768px) {
   .faq {
+    -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -411,12 +531,15 @@ a {
   padding: 1rem;
   border-radius: var(--border-radius);
   cursor: pointer;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .answer {
   max-height: 0;
   overflow: hidden;
+  -webkit-transition: max-height var(--transition-speed) ease;
+  -o-transition: max-height var(--transition-speed) ease;
   transition: max-height var(--transition-speed) ease;
 }
 
@@ -436,7 +559,11 @@ footer {
 }
 
 .social-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   gap: 1.5rem;
   font-size: 2rem;
@@ -473,8 +600,14 @@ footer {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   z-index: 2000;
 }

@@ -531,7 +531,6 @@ const AboutPage = () => {
               src="/assets/images/Hannah-Hill.webp"
               alt="A picture of the founder of Pilates Babe Cardiff"
               id="bio-img"
-              loading="lazy"
             />
           </div>
           <div className="text">
