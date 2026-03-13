@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 // ------------------------------------------------------------------
@@ -166,18 +166,63 @@ const WaveDivider = ({ inverted = false }) => (
 
 const HeroCarousel = () => {
   const carouselRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false); // Controls the smooth fade-in
 
-  const images = [
+  const baseImages = [
     "/assets/images/Hannah-pilates-1.webp",
     "/assets/images/pilates-babe-reservoir.webp",
     "/assets/images/Hannah-pilates-2.webp",
     "/assets/images/pilates-event.webp",
   ];
 
-  // Function to smoothly scroll the track when arrows are clicked
+  const images = [...baseImages, ...baseImages, ...baseImages];
+
+  // useLayoutEffect runs BEFORE the browser paints to the screen!
+  useLayoutEffect(() => {
+    const track = carouselRef.current;
+    if (track && track.children.length > 0) {
+      // 1. Calculate exact width
+      const slideWidth = track.children[0].offsetWidth;
+      const singleSetWidth = baseImages.length * (slideWidth + 20);
+
+      // 2. Turn off smooth scrolling and teleport instantly
+      track.style.scrollBehavior = "auto";
+      track.scrollLeft = singleSetWidth;
+
+      // 3. Wait exactly one browser frame, turn smooth scrolling back on, and fade it in
+      requestAnimationFrame(() => {
+        track.style.scrollBehavior = "smooth";
+        setIsVisible(true);
+      });
+    }
+  }, []); // Only runs once on load
+
+  const handleInfiniteScroll = () => {
+    const track = carouselRef.current;
+    if (!track || track.children.length === 0) return;
+
+    const slideWidth = track.children[0].offsetWidth;
+    const singleSetWidth = baseImages.length * (slideWidth + 20);
+
+    if (track.scrollLeft <= 10) {
+      track.style.scrollBehavior = "auto";
+      track.style.scrollSnapType = "none";
+      track.scrollLeft += singleSetWidth;
+      void track.offsetWidth;
+      track.style.scrollBehavior = "smooth";
+      track.style.scrollSnapType = "x mandatory";
+    } else if (track.scrollLeft >= track.scrollWidth - track.clientWidth - 10) {
+      track.style.scrollBehavior = "auto";
+      track.style.scrollSnapType = "none";
+      track.scrollLeft -= singleSetWidth;
+      void track.offsetWidth;
+      track.style.scrollBehavior = "smooth";
+      track.style.scrollSnapType = "x mandatory";
+    }
+  };
+
   const scroll = (direction) => {
     if (carouselRef.current) {
-      // Scrolls by roughly the width of one image
       const scrollAmount = carouselRef.current.children[0].offsetWidth + 20;
       carouselRef.current.scrollBy({
         left: direction === "next" ? scrollAmount : -scrollAmount,
@@ -187,7 +232,14 @@ const HeroCarousel = () => {
   };
 
   return (
-    <div className="hero-carousel-wrapper">
+    // Added an inline style here that fades the carousel in only after it has been perfectly positioned!
+    <div
+      className="hero-carousel-wrapper"
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transition: "opacity 0.4s ease-in-out",
+      }}
+    >
       <button
         className="carousel-control prev"
         onClick={() => scroll("prev")}
@@ -196,12 +248,16 @@ const HeroCarousel = () => {
         <i className="fa-solid fa-chevron-left"></i>
       </button>
 
-      <div className="hero-carousel-track" ref={carouselRef}>
+      <div
+        className="hero-carousel-track"
+        ref={carouselRef}
+        onScroll={handleInfiniteScroll}
+      >
         {images.map((src, index) => (
           <img
             key={index}
             src={src}
-            alt={`Pilates Babe slide ${index + 1}`}
+            alt={`Pilates Babe slide`}
             className="carousel-image-slide"
           />
         ))}
@@ -370,16 +426,22 @@ const TimetablePage = () => {
               href="https://gymcatch.com/app/provider/9600/events"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Click or scan to book a class"
             >
-              BOOK HERE
+              <img
+                src="/assets/images/pilates-babe-qr.webp"
+                alt="QR code for booking Pilates Babe Cardiff classes"
+                style={{ height: "8rem", verticalAlign: "middle" }}
+              />
             </a>
           </h2>
           <p>
-            You can make a booking using the "BOOK HERE" link above or by
-            visiting the respective studio's booking system directly. Please
-            note that due to some classes being hosted by third-party studios,
-            bookings and cancellation policies may vary. Always check the
-            specific studio's guidelines when booking their classes.
+            You can make a booking using the "BOOK HERE" link on the home page,
+            by using the QR code above, or by visiting the respective studio's
+            booking system directly. Please note that due to some classes being
+            hosted by third-party studios, booking and cancellation policies may
+            vary. Always check the specific studio's guidelines when booking
+            their classes.
           </p>
         </div>
       </aside>
