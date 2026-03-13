@@ -315,6 +315,28 @@ a {
   border-radius: 4px;
 }
 
+/* QR Code Link Styling */
+.qr-link-img {
+  width: 150px; /* Adjust this to make the QR code bigger or smaller */
+  height: 150px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition:
+    transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
+  background-color: var(
+    --color-white
+  ); /* Keeps the QR code perfectly readable */
+  padding: 10px; /* Gives the QR code a nice little white border frame */
+}
+
+.qr-link-img:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
 /* =========================================
    6. ABOUT & FAQ STYLES
 ========================================= */

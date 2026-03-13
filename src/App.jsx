@@ -257,8 +257,11 @@ const HeroCarousel = () => {
           <img
             key={index}
             src={src}
-            alt={`Pilates Babe slide`}
+            alt={`Pilates Babe slide ${index + 1}`}
             className="carousel-image-slide"
+            // The magic happens here:
+            loading={index === 0 ? "eager" : "lazy"}
+            fetchPriority={index === 0 ? "high" : "auto"}
           />
         ))}
       </div>
@@ -450,6 +453,10 @@ const TimetablePage = () => {
   );
 };
 
+// ------------------------------------------------------------------
+// PAGE 3: ABOUT
+// ------------------------------------------------------------------
+
 const AboutPage = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
   const faqs = [
@@ -524,6 +531,7 @@ const AboutPage = () => {
               src="/assets/images/Hannah-Hill.webp"
               alt="A picture of the founder of Pilates Babe Cardiff"
               id="bio-img"
+              loading="lazy"
             />
           </div>
           <div className="text">
