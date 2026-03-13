@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
           <Link to="/" className="navbar-brand">
             <img
               id="navbar-brand-img"
-              src="/assets/images/pilatesbabe_logo.png"
+              src="/assets/images/pilates-babe-logo.webp"
               alt="PilatesBabe logo"
               style={{ height: "11rem" }}
             />
@@ -459,7 +459,7 @@ const AboutPage = () => {
         <div className="bio container">
           <div className="bio-img-div svg-layer-2">
             <img
-              src="/assets/images/Hannah-Hill.png"
+              src="/assets/images/Hannah-Hill.webp"
               alt="A picture of the founder of Pilates Babe Cardiff"
               id="bio-img"
             />
