@@ -286,7 +286,7 @@ a {
 }
 
 .card#classes {
-  border-radius: inherit;
+  border: none;
 }
 
 .card#about {

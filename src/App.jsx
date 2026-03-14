@@ -74,6 +74,7 @@ const Layout = ({ children }) => {
       <main className="flex-grow-1">{children}</main>
 
       {/* Footer */}
+      <WaveDivider />
       <footer id="contact" className="mt-auto footer-spacer svg-layer-4">
         <div className="container">
           <h1>Contact me Babe</h1>
@@ -335,7 +336,6 @@ const HomePage = () => (
         </div>
       </div>
       <div id="grid-image" className="spacer svg-layer-3"></div>
-      <WaveDivider />
     </section>
   </>
 );
@@ -448,7 +448,6 @@ const TimetablePage = () => {
           </p>
         </div>
       </aside>
-      <WaveDivider />
     </section>
   );
 };
@@ -577,7 +576,6 @@ const AboutPage = () => {
           ))}
         </div>
       </section>
-      <WaveDivider />
     </>
   );
 };
