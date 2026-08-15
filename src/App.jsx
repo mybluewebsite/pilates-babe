@@ -57,6 +57,15 @@ const Layout = ({ children }) => {
               <li>
                 <Link
                   className="nav-item"
+                  to="/events"
+                  onClick={() => setIsNavOpen(false)}
+                >
+                  EVENTS
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="nav-item"
                   to="/about"
                   onClick={() => setIsNavOpen(false)}
                 >
@@ -453,7 +462,52 @@ const TimetablePage = () => {
 };
 
 // ------------------------------------------------------------------
-// PAGE 3: ABOUT
+// PAGE 3: EVENTS
+// ------------------------------------------------------------------
+
+const EventsPage = () => {
+  return (
+    <section className="events-section">
+      <h2 className="section-title">Upcoming Events</h2>
+      
+      <div className="event-card">
+        {/* Space for a picture using your existing asset */}
+        <div className="event-image-container">
+          <img 
+            src="/assets/images/pilates-event.webp" 
+            alt="Event Placeholder" 
+            className="event-image"
+          />
+        </div>
+
+        {/* Event Details */}
+        <div className="event-details">
+          <h3 className="event-title">[Event Name Placeholder]</h3>
+          
+          <ul className="event-info-list">
+            <li><strong>Date:</strong> [DD/MM/YYYY]</li>
+            <li><strong>Time:</strong> [00:00 AM/PM]</li>
+            <li><strong>Location:</strong> [Studio / Location Name]</li>
+            <li><strong>Spaces Available:</strong> [X spaces left]</li>
+          </ul>
+
+          <div className="event-description">
+            <p>
+              [Description Placeholder: Add details about what to expect during the event, what to bring, and any other important information for attendees.]
+            </p>
+          </div>
+          
+          <button className="book-now-button">Book Space</button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default EventsTab;
+
+// ------------------------------------------------------------------
+// PAGE 4: ABOUT
 // ------------------------------------------------------------------
 
 const AboutPage = () => {
@@ -590,6 +644,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/timetable" element={<TimetablePage />} />
+          <Route path="/events" element={<EventsPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </Layout>
