@@ -465,46 +465,148 @@ const TimetablePage = () => {
 // PAGE 3: EVENTS
 // ------------------------------------------------------------------
 
+// 1. Create an array holding the details for all your past events
+const pastEventsData = [
+  {
+    id: 1, // Always give items a unique ID for React's 'key' prop
+    title: "Pilates Babe at Parkside",
+    date: "20/02/2026",
+    location: "Parkside, Unit 1 Clear Water Way, Cardiff, CF23 6DZ",
+    description:
+      "Pilates & Lattes by day. Pilates & Prosecco by night. Your choice of a latte (decaf or full caffeine) or a glass of prosecco is included in your ticket. Trade bedtime routines for movement, coffee, or bubbles. Your time. Your reset. Come for a Friday evening wind down and swap the chaos for Pilates, a drink, and a proper yap in the best setting. Join us at Parkside for a feel- good Pilates session, followed by your drink of choice. Step out, switch off, and pour back into yourself. Move your body.Sip your drink.Set the tone for your weekend. Because sometimes self - care looks like strong Pilates and a warm coffee… and sometimes it looks like strong Pilates and a cold glass of prosecco. 🥂",
+    image: "/assets/images/pilates-event.webp",
+  },
+  {
+    id: 2,
+    title: "Pilates Babe at Parkside",
+    date: "24/04/2026",
+    location: "Parkside, Unit 1 Clear Water Way, Cardiff, CF23 6DZ",
+    description:
+      "Pilates. Lattes. Pastries. ✨ An early one, babes. We move first - 45 minutes of feel-good, work-hard Pilates that will make you feel it. Then it’s coffee, pastries, and a slow morning done properly. Stay and sip. Open the laptop. Romanticise your routine a little. Or take it to go and float into your Friday feeling like that babe. This isn’t just a class - it’s how your weekend starts. Included: Pilates, Coffee of choice made to order, Pastries to choose from. Feel free to stay or Brekkie to go.",
+    image: "/assets/images/pilates-event.webp",
+  },
+  {
+    id: 3,
+    title: "Flight Club x Pilates Babe | Cleared for takeoff",
+    date: "06/05/2026",
+    location: "3-4 St. Mary St, Cardiff CF10 1AT",
+    description:
+      "Babes… You've officially been cleared for take-off CDF > PB ✈️ Introducing Pilates Babe x Flight Club: Cleared for Take-off. We’re taking it to the terrace for a 10:30am Wednesday departure - a 45 minute Pilates flow designed to make you work, shake, and feel that first-class burn. No turbulence, just controlled movement… and maybe a little spice. We taxi straight into pastries, lattes + TRIP drinks because balance, always. Expect good energy, gorgeous people, and that signature Pilates Babe vibe… but elevated. Ready for departure?",
+    image: "/assets/images/pilates-event.webp",
+  },
+  {
+    id: 4,
+    title: "Rhiwbina Babes Pilates + Drinks",
+    date: "03/07/2026",
+    location: "1 Lôn Ucha, Cardiff, CF14 6HL",
+    description:
+      "The Wednesday Babes are relocating for one night only. Our regular class but on a Friday with drinks after. All are welcome to pop down into the village (headed for Mesen I think) - I have messaged them to reserve some seating for us. If you can join it would be a lovely way to spend Friday.",
+    image: "/assets/images/pilates-event.webp",
+  },
+];
+
 const EventsPage = () => {
   return (
-    <section className="events-section">
-      <h2 className="section-title">Upcoming Events</h2>
-      
-      <div className="event-card">
-        {/* Space for a picture using your existing asset */}
-        <div className="event-image-container">
-          <img 
-            src="/assets/images/pilates-event.webp" 
-            alt="Event Placeholder" 
-            className="event-image"
-          />
-        </div>
+    <div className="events-page-wrapper">
+      {/* --- PAST EVENTS SECTION --- */}
+      <section className="events-section">
+        <h2 className="section-title">Past Events</h2>
 
-        {/* Event Details */}
-        <div className="event-details">
-          <h3 className="event-title">[Event Name Placeholder]</h3>
-          
-          <ul className="event-info-list">
-            <li><strong>Date:</strong> [DD/MM/YYYY]</li>
-            <li><strong>Time:</strong> [00:00 AM/PM]</li>
-            <li><strong>Location:</strong> [Studio / Location Name]</li>
-            <li><strong>Spaces Available:</strong> [X spaces left]</li>
-          </ul>
+        {/* 2. Use .map() to loop through the array and render a card for each */}
+        {pastEventsData.map((event) => (
+          <div className="event-card" key={event.id}>
+            <div className="event-image-container">
+              <img
+                src={event.image}
+                alt={event.title}
+                className="event-image"
+              />
+            </div>
 
-          <div className="event-description">
-            <p>
-              [Description Placeholder: Add details about what to expect during the event, what to bring, and any other important information for attendees.]
-            </p>
+            <div className="event-details">
+              <h3 className="event-title">{event.title}</h3>
+
+              <ul className="event-info-list">
+                <li>
+                  <strong>Date:</strong> {event.date}
+                </li>
+                <li>
+                  <strong>Location:</strong> {event.location}
+                </li>
+              </ul>
+
+              <div className="event-description">
+                <p>{event.description}</p>
+              </div>
+
+              <button className="book-now-button secondary-button">
+                View Gallery
+              </button>
+            </div>
           </div>
-          
-          <button className="book-now-button">Book Space</button>
+        ))}
+      </section>
+
+      {/* --- UPCOMING EVENTS SECTION --- */}
+      <section className="events-section">
+        <h2 className="section-title">Upcoming Events</h2>
+
+        {/* You can leave this as a single static card, or create an upcomingEventsData array and map it exactly like above! */}
+        <div className="event-card">
+          <div className="event-image-container">
+            <img
+              src="/assets/images/pilates-event.webp"
+              alt="Upcoming Event Placeholder"
+              className="event-image"
+            />
+          </div>
+
+          <div className="event-details">
+            <h3 className="event-title">🌸 Pilates & Picnic in the Park 🌸</h3>
+
+            <ul className="event-info-list">
+              <li>
+                <strong>Date:</strong> 16/08/2026
+              </li>
+              <li>
+                <strong>Time:</strong> 14:00
+              </li>
+              <li>
+                <strong>Location:</strong> Waterloo Gardens, Penylan, Cardiff,
+                CF22 5AA
+              </li>
+              <li>
+                <strong>Spaces Available:</strong> 16
+              </li>
+            </ul>
+
+            <div className="event-description">
+              <p>
+                ✨ 45-minute all-level Pilates class 🩷 All equipment provided
+                🥂 Prosecco/Nosecco 🍓 Fresh strawberries & scones ☀️ Time to
+                relax, chat and meet fellow Pilates Babes 🎟️ £20 per person Only
+                15 spaces available, so once they're gone, they're gone! Come on
+                your own or bring your bestie—everyone is welcome. Let's move,
+                laugh and enjoy a gorgeous summer afternoon together. 💕
+              </p>
+            </div>
+            <button
+              className="book-now-button"
+              onClick={() =>
+                window.open(
+                  "https://gymcatch.com/app/provider/9600/events/9714034",
+                  "_blank",
+                )
+              }
+            >
+              Book Space
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
-
-export default EventsTab;
 
 // ------------------------------------------------------------------
 // PAGE 4: ABOUT
