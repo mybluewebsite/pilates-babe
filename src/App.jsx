@@ -72,6 +72,15 @@ const Layout = ({ children }) => {
                   ABOUT
                 </Link>
               </li>
+              <li>
+                <Link
+                  className="nav-item"
+                  to="/ugc"
+                  onClick={() => setIsNavOpen(false)}
+                >
+                  UGC
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -462,18 +471,15 @@ const TimetablePage = () => {
 };
 
 // ------------------------------------------------------------------
-// PAGE 3: EVENTS
+// PAGE 3: EVENTS DATA
 // ------------------------------------------------------------------
-
-// 1. Create an array holding the details for all your past events
 const pastEventsData = [
   {
-    id: 1, // Always give items a unique ID for React's 'key' prop
+    id: 1, 
     title: "Pilates Babe at Parkside",
     date: "20/02/2026",
     location: "Parkside, Unit 1 Clear Water Way, Cardiff, CF23 6DZ",
-    description:
-      "Pilates & Lattes by day. Pilates & Prosecco by night. Your choice of a latte (decaf or full caffeine) or a glass of prosecco is included in your ticket. Trade bedtime routines for movement, coffee, or bubbles. Your time. Your reset. Come for a Friday evening wind down and swap the chaos for Pilates, a drink, and a proper yap in the best setting. Join us at Parkside for a feel- good Pilates session, followed by your drink of choice. Step out, switch off, and pour back into yourself. Move your body.Sip your drink.Set the tone for your weekend. Because sometimes self - care looks like strong Pilates and a warm coffee… and sometimes it looks like strong Pilates and a cold glass of prosecco. 🥂",
+    description: "Pilates & Lattes by day. Pilates & Prosecco by night. Your choice of a latte (decaf or full caffeine) or a glass of prosecco is included in your ticket. Trade bedtime routines for movement, coffee, or bubbles. Your time. Your reset. Come for a Friday evening wind down and swap the chaos for Pilates, a drink, and a proper yap in the best setting. Join us at Parkside for a feel-good Pilates session, followed by your drink of choice. Step out, switch off, and pour back into yourself. Move your body. Sip your drink. Set the tone for your weekend. Because sometimes self-care looks like strong Pilates and a warm coffee… and sometimes it looks like strong Pilates and a cold glass of prosecco. 🥂",
     image: "/assets/images/pilates-event.webp",
   },
   {
@@ -481,8 +487,7 @@ const pastEventsData = [
     title: "Pilates Babe at Parkside",
     date: "24/04/2026",
     location: "Parkside, Unit 1 Clear Water Way, Cardiff, CF23 6DZ",
-    description:
-      "Pilates. Lattes. Pastries. ✨ An early one, babes. We move first - 45 minutes of feel-good, work-hard Pilates that will make you feel it. Then it’s coffee, pastries, and a slow morning done properly. Stay and sip. Open the laptop. Romanticise your routine a little. Or take it to go and float into your Friday feeling like that babe. This isn’t just a class - it’s how your weekend starts. Included: Pilates, Coffee of choice made to order, Pastries to choose from. Feel free to stay or Brekkie to go.",
+    description: "Pilates. Lattes. Pastries. ✨ An early one, babes. We move first - 45 minutes of feel-good, work-hard Pilates that will make you feel it. Then it’s coffee, pastries, and a slow morning done properly. Stay and sip. Open the laptop. Romanticise your routine a little. Or take it to go and float into your Friday feeling like that babe. This isn’t just a class - it’s how your weekend starts. Included: Pilates, Coffee of choice made to order, Pastries to choose from. Feel free to stay or Brekkie to go.",
     image: "/assets/images/pilates-event.webp",
   },
   {
@@ -490,8 +495,7 @@ const pastEventsData = [
     title: "Flight Club x Pilates Babe | Cleared for takeoff",
     date: "06/05/2026",
     location: "3-4 St. Mary St, Cardiff CF10 1AT",
-    description:
-      "Babes… You've officially been cleared for take-off CDF > PB ✈️ Introducing Pilates Babe x Flight Club: Cleared for Take-off. We’re taking it to the terrace for a 10:30am Wednesday departure - a 45 minute Pilates flow designed to make you work, shake, and feel that first-class burn. No turbulence, just controlled movement… and maybe a little spice. We taxi straight into pastries, lattes + TRIP drinks because balance, always. Expect good energy, gorgeous people, and that signature Pilates Babe vibe… but elevated. Ready for departure?",
+    description: "Babes… You've officially been cleared for take-off CDF > PB ✈️ Introducing Pilates Babe x Flight Club: Cleared for Take-off. We’re taking it to the terrace for a 10:30am Wednesday departure - a 45 minute Pilates flow designed to make you work, shake, and feel that first-class burn. No turbulence, just controlled movement… and maybe a little spice. We taxi straight into pastries, lattes + TRIP drinks because balance, always. Expect good energy, gorgeous people, and that signature Pilates Babe vibe… but elevated. Ready for departure?",
     image: "/assets/images/pilates-event.webp",
   },
   {
@@ -499,49 +503,117 @@ const pastEventsData = [
     title: "Rhiwbina Babes Pilates + Drinks",
     date: "03/07/2026",
     location: "1 Lôn Ucha, Cardiff, CF14 6HL",
-    description:
-      "The Wednesday Babes are relocating for one night only. Our regular class but on a Friday with drinks after. All are welcome to pop down into the village (headed for Mesen I think) - I have messaged them to reserve some seating for us. If you can join it would be a lovely way to spend Friday.",
+    description: "The Wednesday Babes are relocating for one night only. Our regular class but on a Friday with drinks after. All are welcome to pop down into the village (headed for Mesen I think) - I have messaged them to reserve some seating for us. If you can join it would be a lovely way to spend Friday.",
     image: "/assets/images/pilates-event.webp",
-  },
+  }
 ];
 
+// ------------------------------------------------------------------
+// CAROUSEL COMPONENT
+// ------------------------------------------------------------------
+const MediaCarousel = ({ mediaList }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev === mediaList.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev === 0 ? mediaList.length - 1 : prev - 1));
+  };
+
+  if (!mediaList || mediaList.length === 0) return null;
+
+  const currentMedia = mediaList[currentIndex];
+
+  return (
+    <div className="event-image-container carousel-container">
+      {currentMedia.type === 'video' ? (
+        <video 
+          src={currentMedia.src} 
+          className="event-image" 
+          controls 
+          autoPlay 
+          muted 
+          loop
+        />
+      ) : (
+        <img 
+          src={currentMedia.src} 
+          alt={`Event media ${currentIndex + 1}`} 
+          className="event-image"
+        />
+      )}
+      
+      {mediaList.length > 1 && (
+        <>
+          <button className="carousel-button prev" onClick={prevSlide}>
+            &#10094;
+          </button>
+          <button className="carousel-button next" onClick={nextSlide}>
+            &#10095;
+          </button>
+          
+          <div className="carousel-dots">
+            {mediaList.map((_, index) => (
+              <span 
+                key={index} 
+                className={`dot ${index === currentIndex ? 'active' : ''}`}
+                onClick={() => setCurrentIndex(index)}
+              ></span>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+// ------------------------------------------------------------------
+// MAIN EVENTS PAGE COMPONENT
+// ------------------------------------------------------------------
 const EventsPage = () => {
+  
+  const picnicMedia = [
+    { type: 'image', src: '/assets/images/events/park1.jpg' },
+    { type: 'video', src: '/assets/images/events/park2.mp4' },
+    { type: 'video', src: '/assets/images/events/park3.mp4' },
+    { type: 'video', src: '/assets/images/events/park4.mp4' },
+    { type: 'video', src: '/assets/images/events/park5.mp4' },
+    { type: 'video', src: '/assets/images/events/park6.mp4' },
+  ];
+
   return (
     <div className="events-page-wrapper">
+      
       {/* --- PAST EVENTS SECTION --- */}
       <section className="events-section">
         <h2 className="section-title">Past Events</h2>
-
-        {/* 2. Use .map() to loop through the array and render a card for each */}
+        
+        {/* This map function was missing, which is why they disappeared! */}
         {pastEventsData.map((event) => (
           <div className="event-card" key={event.id}>
             <div className="event-image-container">
-              <img
-                src={event.image}
-                alt={event.title}
+              <img 
+                src={event.image} 
+                alt={event.title} 
                 className="event-image"
               />
             </div>
 
             <div className="event-details">
               <h3 className="event-title">{event.title}</h3>
-
+              
               <ul className="event-info-list">
-                <li>
-                  <strong>Date:</strong> {event.date}
-                </li>
-                <li>
-                  <strong>Location:</strong> {event.location}
-                </li>
+                <li><strong>Date:</strong> {event.date}</li>
+                <li><strong>Location:</strong> {event.location}</li>
               </ul>
 
               <div className="event-description">
                 <p>{event.description}</p>
               </div>
-
-              <button className="book-now-button secondary-button">
-                View Gallery
-              </button>
+              
+              <button className="book-now-button secondary-button">View Gallery</button>
             </div>
           </div>
         ))}
@@ -551,33 +623,18 @@ const EventsPage = () => {
       <section className="events-section">
         <h2 className="section-title">Upcoming Events</h2>
 
-        {/* You can leave this as a single static card, or create an upcomingEventsData array and map it exactly like above! */}
         <div className="event-card">
-          <div className="event-image-container">
-            <img
-              src="/assets/images/pilates-event.webp"
-              alt="Upcoming Event Placeholder"
-              className="event-image"
-            />
-          </div>
+          
+          <MediaCarousel mediaList={picnicMedia} />
 
           <div className="event-details">
             <h3 className="event-title">🌸 Pilates & Picnic in the Park 🌸</h3>
 
             <ul className="event-info-list">
-              <li>
-                <strong>Date:</strong> 16/08/2026
-              </li>
-              <li>
-                <strong>Time:</strong> 14:00
-              </li>
-              <li>
-                <strong>Location:</strong> Waterloo Gardens, Penylan, Cardiff,
-                CF22 5AA
-              </li>
-              <li>
-                <strong>Spaces Available:</strong> 16
-              </li>
+              <li><strong>Date:</strong> 16/08/2026</li>
+              <li><strong>Time:</strong> 14:00</li>
+              <li><strong>Location:</strong> Waterloo Gardens, Penylan, Cardiff, CF22 5AA</li>
+              <li><strong>Spaces Available:</strong> 16</li>
             </ul>
 
             <div className="event-description">
@@ -590,12 +647,13 @@ const EventsPage = () => {
                 laugh and enjoy a gorgeous summer afternoon together. 💕
               </p>
             </div>
+            
             <button
               className="book-now-button"
               onClick={() =>
                 window.open(
                   "https://gymcatch.com/app/provider/9600/events/9714034",
-                  "_blank",
+                  "_blank"
                 )
               }
             >
@@ -604,6 +662,7 @@ const EventsPage = () => {
           </div>
         </div>
       </section>
+
     </div>
   );
 };
@@ -737,7 +796,105 @@ const AboutPage = () => {
 };
 
 // ------------------------------------------------------------------
-// 3. MAIN APP ROUTER
+// 5. UGC
+// ------------------------------------------------------------------
+
+// Array for your brand partnerships/UGC work
+const collabData = [
+  {
+    id: 1,
+    brand: "[Brand Name - e.g., Alo Yoga]",
+    campaign: "Summer Activewear Collection",
+    image: "/assets/images/Hannah-pilates-1.webp",
+    description: "A promotional UGC video campaign highlighting mobility, comfort, and breathability in their new seamless collection during high-intensity reformer flows."
+  },
+  {
+    id: 2,
+    brand: "[Brand Name - e.g., Liquid IV]",
+    campaign: "Hydration & Recovery",
+    image: "/assets/images/Hannah-pilates-2.webp",
+    description: "A series of TikToks and Instagram Reels showcasing post-workout recovery, studio lifestyle, and the importance of hydration."
+  }
+];
+
+const UgcPage = () => {
+  return (
+    <div className="ugc-page-wrapper">
+      
+      {/* --- BRAND PARTNERSHIPS SECTION --- */}
+      <section className="events-section">
+        <h2 className="section-title">Brand Partnerships & UGC</h2>
+        <p className="ugc-intro">
+          Partnering with wellness, lifestyle, and activewear brands to create authentic, high-converting content that resonates with the Pilates and fitness community.
+        </p>
+
+        {/* We use a grid here to make it look like a portfolio/feed */}
+        <div className="ugc-grid">
+          {collabData.map((collab) => (
+            <div className="event-card ugc-card" key={collab.id}>
+              <div className="event-image-container">
+                <img 
+                  src={collab.image} 
+                  alt={collab.brand} 
+                  className="event-image"
+                />
+              </div>
+
+              <div className="event-details">
+                <h3 className="event-title">{collab.brand}</h3>
+                <p className="ugc-campaign"><strong>Campaign:</strong> {collab.campaign}</p>
+                
+                <div className="event-description">
+                  <p>{collab.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <hr className="section-divider" />
+
+      {/* --- OUR BRAND SECTION --- */}
+      <section className="events-section">
+        <h2 className="section-title">The PilatesBabe Brand</h2>
+        
+        <div className="event-card">
+          <div className="event-image-container">
+            {/* Using your green/pink branding image */}
+            <img 
+              src="/assets/images/pilates-babe-green-pink.webp" 
+              alt="PilatesBabe Brand" 
+              className="event-image"
+            />
+          </div>
+
+          <div className="event-details">
+            <h3 className="event-title">More Than Just a Studio</h3>
+            <div className="event-description">
+              <p>
+                Beyond partnerships, PilatesBabe is a lifestyle. We pride ourselves on building a community that values mindful movement, aesthetic wellness, and empowering one another both on and off the mat.
+              </p>
+            </div>
+            
+            <a 
+              href="https://instagram.com/pilatesbabecardiff" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="book-now-button link-button secondary-button"
+            >
+              Join the community of Babes
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+};
+
+// ------------------------------------------------------------------
+// 6. MAIN APP ROUTER
 // ------------------------------------------------------------------
 const App = () => {
   return (
@@ -748,6 +905,7 @@ const App = () => {
           <Route path="/timetable" element={<TimetablePage />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/ugc" element={<UgcPage />} />
         </Routes>
       </Layout>
     </Router>

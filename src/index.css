@@ -697,6 +697,83 @@ footer {
   background-color: #ff9eab;
 }
 
+/* --- CAROUSEL STYLES --- */
+.carousel-container {
+  position: relative;
+  background-color: #f3f4f6;
+  overflow: hidden;
+}
+
+/* Force both images and videos in the carousel to fill the container without distorting */
+.carousel-container .event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  z-index: 10;
+  transition: background-color 0.2s ease;
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 10px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.carousel-dots .dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.carousel-dots .dot.active {
+  background-color: #ffffff;
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+
+/* Responsive adjustment for the carousel height on larger screens */
+@media (min-width: 768px) {
+  .carousel-container {
+    height: 100%; 
+  }
+}
+
 /* Responsive layout for larger screens */
 @media (min-width: 768px) {
   .event-card {
@@ -711,6 +788,55 @@ footer {
   }
   .event-details {
     flex: 1;
+  }
+}
+
+/* =========================================
+   9. UGC / COLLABORATION PAGE STYLES
+========================================= */
+
+/* UGC Page Specific Styles */
+.ugc-intro {
+  text-align: center;
+  max-width: 650px;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  color: #4a4a4a;
+}
+
+.ugc-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.ugc-campaign {
+  font-size: 0.9rem;
+  color: #ffb6c1; /* Match your pink theme */
+  margin-bottom: 0.75rem;
+}
+
+.section-divider {
+  border: 0;
+  height: 1px;
+  background-color: #eaeaea;
+  width: 80%;
+  max-width: 800px;
+  margin: 3rem auto;
+}
+
+/* On screens larger than 768px, make it a 2-column portfolio */
+@media (min-width: 768px) {
+  .ugc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Force the UGC cards to stack vertically inside the grid columns */
+  .ugc-card {
+    flex-direction: column !important;
   }
 }
 
